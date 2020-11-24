@@ -9,14 +9,20 @@ class App extends Component {
       <div id="main">
         <BrowserRouter>
           <LocationDisplay />
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
           <Switch>
             <Route exact path="/about">
-              <div>You are on about Page</div>
+              <>
+                <Link to="/">Home</Link>
+                <Link to="/about">About</Link>
+                <div>You are on about Page</div>
+              </>
             </Route>
             <Route exact path="/">
-              <Home />
+              <>
+                <Link to="/">Home</Link>
+                <Link to="/about">About</Link>
+                <Home />
+              </>
             </Route>
             <Route path="*">
               <div>No match</div>
@@ -32,10 +38,10 @@ function Home() {
   return <div>You are home</div>;
 }
 
-function LocationDisplay() {
+export function LocationDisplay() {
   const { pathname } = useLocation();
   return <div data-testid="location-display">{pathname}</div>;
 }
 
-export { LocationDisplay };
+// export { LocationDisplay };
 export default App;
